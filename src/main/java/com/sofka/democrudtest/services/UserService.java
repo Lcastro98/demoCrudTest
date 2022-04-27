@@ -30,6 +30,11 @@ public class UserService {
         return userRepository.findByPriority(priority);
     }
 
+    public UserModel updateUser(Long id, UserModel user) {
+        user.setId(id);
+        return userRepository.save(user);
+    }
+
     public boolean deleteUser(Long id) {
         try{
             userRepository.deleteById(id);
