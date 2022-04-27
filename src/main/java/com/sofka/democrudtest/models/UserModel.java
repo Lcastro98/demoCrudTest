@@ -1,11 +1,11 @@
 package com.sofka.democrudtest.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -19,11 +19,19 @@ public class UserModel {
     private String email;
     private Integer priority;
 
+    @OneToMany(
+            mappedBy = "userModel",
+            fetch = FetchType.EAGER,
+            targetEntity = UserRolModel.class
+    )
+    @JsonManagedReference
+    private Set<UserRolModel> userRoles = new LinkedHashSet<>();
+
     public void setPriority(Integer priority) {
         this.priority = priority;
     }
 
-    public Integer getPrioridad() {
+    public Integer getPriority() {
         return priority;
     }
 
@@ -35,12 +43,12 @@ public class UserModel {
         this.id = id;
     }
 
-    public String getNombre() {
+    public String getName() {
         return name;
     }
 
-    public void setNombre(String nombre) {
-        this.name = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
