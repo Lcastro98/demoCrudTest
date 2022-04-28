@@ -17,7 +17,7 @@ public class UserRolModel {
     @ManyToOne(
             fetch = FetchType.LAZY,
             cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     @JsonBackReference
     private UserModel userModel;
 
@@ -45,8 +45,7 @@ public class UserRolModel {
         this.userModel = userModel;
     }
 
-    public UserRolModel(Long id, String rol, UserModel userModel) {
-        this.id = id;
+    public UserRolModel(String rol, UserModel userModel) {
         this.rol = rol;
         this.userModel = userModel;
     }
