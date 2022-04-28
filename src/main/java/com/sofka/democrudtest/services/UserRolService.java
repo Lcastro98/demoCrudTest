@@ -15,15 +15,15 @@ public class UserRolService {
     @Autowired
     UserRolRepository userRolRepository;
 
-    public ArrayList<UserRolModel> getUserRoles(){
+    public ArrayList<UserRolModel> getUserRoles() {
         return (ArrayList<UserRolModel>) userRolRepository.findAll();
     }
 
-    public UserRolModel saveUserRol(UserRolModel rol){
+    public UserRolModel saveUserRol(UserRolModel rol) {
         return userRolRepository.save(rol);
     }
 
-    public Optional<UserRolModel> getById(Long id){
+    public Optional<UserRolModel> getById(Long id) {
         return userRolRepository.findById(id);
     }
 
@@ -33,10 +33,10 @@ public class UserRolService {
     }
 
     public boolean deleteUserRol(Long id) {
-        try{
+        try {
             userRolRepository.deleteById(id);
             return true;
-        }catch(Exception err){
+        } catch (Exception err) {
             return false;
         }
     }

@@ -13,20 +13,20 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public ArrayList<UserModel> getUsers(){
+    public ArrayList<UserModel> getUsers() {
         return (ArrayList<UserModel>) userRepository.findAll();
     }
 
-    public UserModel saveUser(UserModel user){
+    public UserModel saveUser(UserModel user) {
         return userRepository.save(user);
     }
 
-    public Optional<UserModel> getById(Long id){
+    public Optional<UserModel> getById(Long id) {
         return userRepository.findById(id);
     }
 
 
-    public ArrayList<UserModel>  getByPriority(Integer priority) {
+    public ArrayList<UserModel> getByPriority(Integer priority) {
         return userRepository.findByPriority(priority);
     }
 
@@ -36,10 +36,10 @@ public class UserService {
     }
 
     public boolean deleteUser(Long id) {
-        try{
+        try {
             userRepository.deleteById(id);
             return true;
-        }catch(Exception err){
+        } catch (Exception err) {
             return false;
         }
     }
