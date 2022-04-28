@@ -11,8 +11,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.util.List;
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static  org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
@@ -22,7 +22,7 @@ public class UserRolServiceTest {
 
     @Test
     public void testSaveUserRol(){
-        UserRolModel userRolModel=new UserRolModel(1L, "Vendedor", new UserModel("Camila", "cami@gmail.com", 50));
+        UserRolModel userRolModel=new UserRolModel("Vendedor", new UserModel("Camila", "cami@gmail.com", 20));
         UserRolModel userRolModelSaved = userRolRepository.save(userRolModel);
         assertNotNull(userRolModelSaved);
     }
