@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class UserRolMockTest {
+public class UserRolServiceMockTest {
     @MockBean
     UserRolRepository userRolRepository;
 
@@ -20,7 +20,7 @@ public class UserRolMockTest {
     UserRolService userRolService;
 
     @Test
-    public void testUserMock(){
+    public void testUserRolMock(){
         when(userRolRepository.findAll()).thenReturn(new ArrayList<>());
         assertThat(userRolService.getUserRoles()).isEmpty();
         verify(userRolRepository).findAll();
